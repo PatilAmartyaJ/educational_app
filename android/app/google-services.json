@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1076019702644",
+    "project_id": "educational-app-183a5",
+    "storage_bucket": "educational-app-183a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076019702644:android:de524bd8f1f60b16851a21",
+        "android_client_info": {
+          "package_name": "com.Amartya.educational_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076019702644-pkdjtgoqqs3kgjaegsv02rm7188625jc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Amartya.educational_app",
+            "certificate_hash": "d2b500e77f09df975292c44028475f6f36aacc64"
+          }
+        },
+        {
+          "client_id": "1076019702644-s8ss7jic5k4424bq5acqjq956uh6empv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqmVCO2VuiGzC42GJrGqcPuU9VccyrptE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076019702644-s8ss7jic5k4424bq5acqjq956uh6empv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
