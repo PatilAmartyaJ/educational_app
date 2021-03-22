@@ -8,6 +8,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+final _db = FirebaseFirestore.instance;
+
 class SignUpScreen extends StatefulWidget {
   static String id = "SignUp";
   @override
@@ -22,7 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool _passwordVisible = false;
   bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
-  final _db = FirebaseFirestore.instance;
+
   bool isEmptyEmail = false;
   bool isEmptyPassword = false;
   bool isEmptyName = false;
