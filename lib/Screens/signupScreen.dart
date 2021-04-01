@@ -199,67 +199,70 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text("Sign Up")),
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.all(25),
-            child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _buildName(),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    _buildStandard(),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    _buildEmail(),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    _buildPassword(),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    ElevatedButton(
-                        child: Text(
-                          "Sign up",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.blue[600])),
-                        onPressed: () async {
-                          if (!_formKey.currentState.validate()) {
-                            return;
-                          } else {
-                            _formKey.currentState.save();
-                          }
-                          if (email == null) {
-                            setState(() {
-                              isEmptyEmail = true;
-                            });
-                          }
-                          if (password == null) {
-                            setState(() {
-                              isEmptyPassword = true;
-                            });
-                          }
-                          if (full_name == null) {
-                            setState(() {
-                              isEmptyName = true;
-                            });
-                          } else {
-                            setState(() {
-                              showSpinner = true;
-                            });
-                            await signUp(context);
-                          }
-                        }),
-                  ],
-                )),
+        body: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.all(25),
+              child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      _buildName(),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      _buildStandard(),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      _buildEmail(),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      _buildPassword(),
+                      SizedBox(
+                        height: 100,
+                      ),
+                      ElevatedButton(
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.blue[600])),
+                          onPressed: () async {
+                            if (!_formKey.currentState.validate()) {
+                              return;
+                            } else {
+                              _formKey.currentState.save();
+                            }
+                            if (email == null) {
+                              setState(() {
+                                isEmptyEmail = true;
+                              });
+                            }
+                            if (password == null) {
+                              setState(() {
+                                isEmptyPassword = true;
+                              });
+                            }
+                            if (full_name == null) {
+                              setState(() {
+                                isEmptyName = true;
+                              });
+                            } else {
+                              setState(() {
+                                showSpinner = true;
+                              });
+                              await signUp(context);
+                            }
+                          }),
+                    ],
+                  )),
+            ),
           ),
         ),
       ),

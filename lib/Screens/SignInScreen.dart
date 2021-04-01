@@ -129,7 +129,7 @@ class _SignInScreenState extends State<SignInScreen> {
             width: 100,
           ),
           DialogButton(
-            child: Text('Sign Up'),
+            child: Text('Sign In'),
             onPressed: () => Navigator.pushNamed(context, SignInScreen.id),
             width: 100,
           ),
