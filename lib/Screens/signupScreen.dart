@@ -48,8 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       decoration: kTextFormfielddecoration.copyWith(
         prefix: Opacity(
             opacity: 0.80,
-            child: Icon(FontAwesomeIcons.userCircle,
-                size: 40, color: Colors.black)),
+            child: Icon(Icons.account_circle, size: 40, color: Colors.black)),
         suffix: Opacity(
             opacity: 0.0,
             child: Icon(FontAwesomeIcons.userCircle, color: Colors.black)),
