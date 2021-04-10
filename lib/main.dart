@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/NTSE%20Screens/NTSEHome.dart';
+import 'package:flutter_application_1/PCB%20Screens/PCBHome.dart';
 import 'package:flutter_application_1/Screens/HomeScreen.dart';
 
 import 'package:flutter_application_1/Screens/SignInScreen.dart';
@@ -27,6 +28,7 @@ class EducationalApp extends StatelessWidget {
         HomeScreen.id: (context) => HomeScreen(),
         SearchEngine.id: (context) => SearchEngine(),
         NTSEHome.id: (context) => NTSEHome(),
+	      PCBHome.id: (context) => PCBHome(),
       },
     );
   }
