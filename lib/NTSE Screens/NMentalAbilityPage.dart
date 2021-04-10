@@ -32,7 +32,13 @@ class _NMentalAbilityState extends State<NMentalAbility> {
                 padding: const EdgeInsets.all(12.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, Chapter.id);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ChapterView(sub.id, "NMaths Chapters"),
+                      ),
+                    );
                   },
                   child: Card(
                     elevation: 10.0,
