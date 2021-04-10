@@ -9,11 +9,7 @@ import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
 class PCBHome extends StatelessWidget {
-  List<String> l = [
-    "Physics",
-    "Chemistry",
-    "Biology"
-  ];
+  List<String> l = ["Physics", "Chemistry", "Biology"];
   static String id = "PCBHome";
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
   final Color moreDark = Color.fromARGB(255, 20, 32, 50);
@@ -74,11 +70,7 @@ class PCBHome extends StatelessWidget {
           child: Container(
               color: Colors.grey.withAlpha(100),
               child: TabBarView(
-                children: <Widget>[
-                  PhysicsPage(),
-                  ChemistryPage(),
-                  BiologyPage()
-                ],
+                children: <Widget>[Physics(), Chemistry(), Biology()],
               )),
         ),
       ),
