@@ -8,7 +8,6 @@ import 'package:flutter_application_1/Screens/SignInScreen.dart';
 import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
 import 'package:flutter_application_1/Screens/signupScreen.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
-import 'package:flutter_application_1/chapter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,7 @@ class EducationalApp extends StatelessWidget {
         HomeScreen.id: (context) => HomeScreen(),
         SearchEngine.id: (context) => SearchEngine(),
         NTSEHome.id: (context) => NTSEHome(),
-	      PCBHome.id: (context) => PCBHome(),
+        PCBHome.id: (context) => PCBHome(),
       },
     );
   }

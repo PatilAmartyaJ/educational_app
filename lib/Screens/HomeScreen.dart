@@ -1,4 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/SignInScreen.dart';
+import 'package:flutter_application_1/Screens/profile.dart';
+import 'package:flutter_application_1/constants.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 //import 'package:animated_text_kit/animated_text_kit.dart';
 
@@ -9,16 +15,64 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-        ),
-      ),
-    );
+    return FutureBuilder(
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Scaffold(
+              body: Container(
+                child: Center(
+                  child: Text(" Error : ${snapshot.error}"),
+                ),
+              ),
+            );
+          }
+
+          if (snapshot.connectionState == ConnectionState.done) {
+            return StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, streamsnapshot) {
+                if (streamsnapshot.hasError) {
+                  return Scaffold(
+                    body: Container(
+                      child: Center(
+                        child: Text(" Error : ${streamsnapshot.error}"),
+                      ),
+                    ),
+                  );
+                }
+                if (streamsnapshot.connectionState == ConnectionState.active) {
+                  User _user = streamsnapshot.data;
+                  final User _user2 = auth.currentUser;
+                  if (_user == null) {
+                    return SignInScreen();
+                  } else {
+                    var id = _user2.uid;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Profilepage(id, 'Users'),
+                      ),
+                    );
+                  }
+                }
+                return Scaffold(
+                  body: Center(
+                    child: spinkit,
+                  ),
+                );
+              },
+            );
+          }
+          return Scaffold(
+            body: Center(
+              child: spinkit,
+            ),
+          );
+        });
   }
 }

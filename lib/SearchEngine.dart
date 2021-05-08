@@ -11,9 +11,11 @@ class _SearchEngineState extends State<SearchEngine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Text(
-      "This one is serach Engine",
-      style: TextStyle(color: Colors.white),
+        body: Center(
+      child: Text(
+        "This one is serach Engine",
+        style: TextStyle(color: Colors.white),
+      ),
     ));
   }
 }

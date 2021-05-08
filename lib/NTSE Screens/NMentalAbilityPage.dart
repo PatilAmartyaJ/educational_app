@@ -1,91 +1,87 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/chapter.dart';
-import 'package:flutter_application_1/constants.dart';
+import 'package:flutter_application_1/Components/CirculartabIndicator.dart';
+import 'package:flutter_application_1/NTSE%20Screens/MentalAbilityScreens/Nm1.dart';
+import 'package:flutter_application_1/NTSE%20Screens/MentalAbilityScreens/Nm2.dart';
+import 'package:flutter_application_1/NTSE%20Screens/MentalAbilityScreens/Nm3.dart';
 
-final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
-
-class NMentalAbility extends StatefulWidget {
+class NMentalAbilityTab extends StatefulWidget {
+  NMentalAbilityTab(this.nm1Color);
+  Color nm1Color;
   @override
-  _NMentalAbilityState createState() => _NMentalAbilityState();
+  _NMentalAbilityTabState createState() => _NMentalAbilityTabState();
 }
 
-class _NMentalAbilityState extends State<NMentalAbility> {
+class _NMentalAbilityTabState extends State<NMentalAbilityTab>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+  }
+
+  @override
+  void _handleTabSelection() {
+    setState(() {
+      widget.nm1Color;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    print("NMentalAbility called");
-    return Container(
-        child: StreamBuilder<QuerySnapshot>(
-      stream:
-          FirebaseFirestore.instance.collection("NMaths Chapters").snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return spinkit;
-        }
-        return ListView.builder(
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (context, index) {
-              DocumentSnapshot sub = snapshot.data.docs[index];
-              return Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            ChapterView(sub.id, "NMaths Chapters"),
-                      ),
-                    );
-                  },
-                  child: Card(
-                    elevation: 10.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(12.0),
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50.0),
+            child: AppBar(
+              bottom: TabBar(
+                controller: _tabController,
+                isScrollable: true,
+                indicatorWeight: 4.0,
+                indicator: CircleTabIndicator(color: Colors.orange, radius: 3),
+                unselectedLabelColor: Colors.grey,
+                tabs: <Widget>[
+                  Tab(
+                      child: Text(
+                    "Verbal Reasoning",
+                    style: TextStyle(
+                      color: _tabController.index == 0
+                          ? widget.nm1Color
+                          : Colors.grey,
                     ),
-                    child: Container(
-                      height: 430,
-                      width: 450,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Wrap(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Center(
-                                child: Text(sub['name'],
-                                    style: TextStyle(
-                                      fontSize: 19,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                    )),
-                              ),
-                            ),
-
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.network(sub['img']),
-                            ),
-                            FAProgressBar(
-                              currentValue: sub['percentage'],
-                              maxValue: 100,
-                              direction: Axis.horizontal,
-                              backgroundColor: Colors.white,
-                              progressColor: Colors.teal,
-                              size: 10.0,
-                            )
-                            // textAlign: TextAlign.center,
-                          ],
-                        ),
-                      ),
+                  )),
+                  Tab(
+                      child: Text(
+                    "Non-Verbal Reasoning",
+                    style: TextStyle(
+                      color: _tabController.index == 1
+                          ? widget.nm1Color
+                          : Colors.grey,
                     ),
-                  ),
-                ),
-              );
-            });
-      },
-    ));
+                  )),
+                  Tab(
+                      child: Text(
+                    "Logical and Analytical Reasoning",
+                    style: TextStyle(
+                      color: _tabController.index == 2
+                          ? widget.nm1Color
+                          : Colors.grey,
+                    ),
+                  )),
+                ],
+              ),
+            ),
+          ),
+          body: TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              Nm1(),
+              Nm2(),
+              Nm3(),
+            ],
+          ),
+        ));
   }
 }

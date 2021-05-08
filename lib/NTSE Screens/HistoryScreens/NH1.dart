@@ -4,20 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/chapter.dart';
 import 'package:flutter_application_1/constants.dart';
 
-final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
-
-class Chemistry extends StatefulWidget {
+class NH1 extends StatefulWidget {
   @override
-  _ChemistryState createState() => _ChemistryState();
+  _NH1State createState() => _NH1State();
 }
 
-class _ChemistryState extends State<Chemistry> {
+class _NH1State extends State<NH1> {
   @override
   Widget build(BuildContext context) {
-    print("Chemistry called");
     return Container(
         child: StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection("CChapters").snapshots(),
+      stream:
+          FirebaseFirestore.instance.collection("10Th NHistory").snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return spinkit;
@@ -33,7 +31,8 @@ class _ChemistryState extends State<Chemistry> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChapterView(sub.id, "CChapters"),
+                        builder: (context) =>
+                            ChapterView(sub.id, "10Th NHistory"),
                       ),
                     );
                   },
@@ -43,7 +42,7 @@ class _ChemistryState extends State<Chemistry> {
                       borderRadius: new BorderRadius.circular(12.0),
                     ),
                     child: Container(
-                      height: 430,
+                      height: 450,
                       width: 450,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -60,19 +59,11 @@ class _ChemistryState extends State<Chemistry> {
                                     )),
                               ),
                             ),
-
                             Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.network(sub['img']),
-                            ),
-                            /*FAProgressBar(
-                              currentValue: sub['percentage'],
-                              maxValue: 100,
-                              direction: Axis.horizontal,
-                              backgroundColor: Colors.white,
-                              progressColor: Colors.teal,
-                              size: 10.0,
-                            )*/
+                                padding: const EdgeInsets.all(12.0),
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    child: Image.network(sub['img']))),
                             // textAlign: TextAlign.center,
                           ],
                         ),
