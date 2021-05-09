@@ -15,6 +15,8 @@ void main() async {
   runApp(EducationalApp());
 }
 
+final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
 class EducationalApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,12 @@ class EducationalApp extends StatelessWidget {
         SignUpScreen.id: (context) => SignUpScreen(),
         SignInScreen.id: (context) => SignInScreen(),
         HomeScreen.id: (context) => HomeScreen(),
+        SearchEngine.id: (context) => SearchEngine(),
+        NTSEHome.id: (context) => NTSEHome(),
+        PCBHome.id: (context) => PCBHome(),
       },
+      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
