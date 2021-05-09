@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/SignInScreen.dart';
 import 'package:flutter_application_1/Screens/profile.dart';
 import 'package:flutter_application_1/constants.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-//import 'package:animated_text_kit/animated_text_kit.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
@@ -32,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }
 
-          if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.done ||
+              snapshot.hasData) {
             return StreamBuilder(
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: (context, streamsnapshot) {
@@ -52,12 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     return SignInScreen();
                   } else {
                     var id = _user2.uid;
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Profilepage(id, 'Users'),
-                      ),
-                    );
+                    print(id);
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Profilepage(id, 'users'),
+                        ),
+                      );
+                    });
                   }
                 }
                 return Scaffold(

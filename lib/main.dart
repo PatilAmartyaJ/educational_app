@@ -25,9 +25,6 @@ class EducationalApp extends StatelessWidget {
         SignUpScreen.id: (context) => SignUpScreen(),
         SignInScreen.id: (context) => SignInScreen(),
         HomeScreen.id: (context) => HomeScreen(),
-        SearchEngine.id: (context) => SearchEngine(),
-        NTSEHome.id: (context) => NTSEHome(),
-        PCBHome.id: (context) => PCBHome(),
       },
     );
   }

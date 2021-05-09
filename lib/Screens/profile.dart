@@ -1,12 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/NTSE%20Screens/NTSEHome.dart';
 import 'package:flutter_application_1/PCB%20Screens/PCBHome.dart';
 import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
+import 'package:flutter_application_1/SearchEngine.dart';
 
 import '../constants.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+final FirebaseAuth auth = FirebaseAuth.instance;
 
 class Profilepage extends StatefulWidget {
   final String id;
@@ -45,8 +48,14 @@ class _ChapterViewState extends State<Profilepage> {
                     snapshot.hasData) {
                   var docData = snapshot.data;
                   var userStandard = docData['Standard'];
+                  print(userStandard);
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
+                    routes: {
+                      SearchEngine.id: (context) => SearchEngine(),
+                      NTSEHome.id: (context) => NTSEHome(),
+                      PCBHome.id: (context) => PCBHome(),
+                    },
                     home: SafeArea(
                         child: Scaffold(
                             drawer: Drawer(),
@@ -62,8 +71,13 @@ class _ChapterViewState extends State<Profilepage> {
                                                       context, NTSEHome.id);
                                                 } else if (userStandard ==
                                                     "+1,+2 IIT JEE (PCM)") {
-                                                  Navigator.pushNamed(
-                                                      context, NTSEHome.id);
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          NTSEHome(),
+                                                    ),
+                                                  );
                                                 } else if (userStandard ==
                                                     "+1,+2 NEET,AIIMS (PCB)") {
                                                   Navigator.pushNamed(
@@ -72,9 +86,6 @@ class _ChapterViewState extends State<Profilepage> {
                                                     "+1,+2 PCMB") {
                                                   Navigator.pushNamed(
                                                       context, NTSEHome.id);
-                                                } else {
-                                                  Navigator.pushNamed(context,
-                                                      WelcomeScreen.id);
                                                 }
                                               },
                                               child: Text("Go to DashBoard"))
