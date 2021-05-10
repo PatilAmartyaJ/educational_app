@@ -12,7 +12,7 @@ class ListTileWidget extends StatelessWidget {
       leading: Icon(
         iconData,
         size: 18.0,
-        color: Colors.black,
+        color: Colors.white,
       ),
       title: Text(
         text,
