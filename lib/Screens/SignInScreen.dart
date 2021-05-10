@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class SignInScreen extends StatefulWidget {
-  static String id = "SignIn";
+  static String id = "SignInScreen";
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }

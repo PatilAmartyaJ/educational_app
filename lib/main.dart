@@ -9,6 +9,12 @@ import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
 import 'package:flutter_application_1/Screens/signupScreen.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 
+import 'Components/Screens/drawer_redirect_screens/advanced_challenges_screen.dart';
+import 'Components/Screens/drawer_redirect_screens/books_screen.dart';
+import 'Components/Screens/drawer_redirect_screens/features_screen.dart';
+import 'Components/Screens/drawer_redirect_screens/take_test_screen.dart';
+import 'Components/Screens/drawer_redirect_screens/video_lectures_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -28,8 +34,13 @@ class EducationalApp extends StatelessWidget {
         SignInScreen.id: (context) => SignInScreen(),
         HomeScreen.id: (context) => HomeScreen(),
         SearchEngine.id: (context) => SearchEngine(),
-        NTSEHome.id: (context) => NTSEHome(),
+        //NTSEHome.id: (context) => NTSEHome(),
         PCBHome.id: (context) => PCBHome(),
+        FeaturesScreen.id: (context) => FeaturesScreen(),
+        TakeTestScreen.id: (context) => TakeTestScreen(),
+        BooksScreen.id: (context) => BooksScreen(),
+        VideoLecturesScreen.id: (context) => VideoLecturesScreen(),
+        AdvancedChallengesScreen.id: (context) => AdvancedChallengesScreen(),
       },
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       debugShowCheckedModeBanner: false,

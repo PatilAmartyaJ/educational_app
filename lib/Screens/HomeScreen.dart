@@ -6,7 +6,7 @@ import 'package:flutter_application_1/Screens/profile.dart';
 import 'package:flutter_application_1/constants.dart';
 
 class HomeScreen extends StatefulWidget {
-  static String id = 'welcome_screen';
+  static String id = 'HomeScreen';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
