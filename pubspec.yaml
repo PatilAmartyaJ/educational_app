@@ -36,7 +36,7 @@ dependencies:
   firebase_storage: ^8.0.5
   path: ^1.8.0
   tab_indicator_styler: ^1.0.0
-  
+  google_fonts: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,6 +46,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Italianno
+      fonts:
+        - asset: fonts/Italianno-Regular.ttf
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
