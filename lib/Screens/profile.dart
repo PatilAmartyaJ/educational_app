@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/NTSE%20Screens/NTSEHome.dart';
 import 'package:flutter_application_1/PCB%20Screens/PCBHome.dart';
+import 'package:flutter_application_1/PCM%20Screens/PCMHome.dart';
+import 'package:flutter_application_1/PCMB%20Screens/PCMBHome.dart';
 import 'package:flutter_application_1/Screens/HomeScreen.dart';
 import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
@@ -120,16 +122,13 @@ class _ChapterViewState extends State<Profilepage> {
             builder: (context) => NTSEHome(id, 'users'),
           ),
         );
-      }
-      //else if (st == 2) {
-      //   Navigator.pushNamed(context, PCMHome.id);
-      // }
-      else if (st == 3) {
+      } else if (st == 2) {
+        Navigator.pushNamed(context, PCMHome.id);
+      } else if (st == 3) {
         Navigator.pushNamed(context, PCBHome.id);
+      } else if (st == 4) {
+        Navigator.pushNamed(context, PCMBHome.id);
       }
-      // else if(st == 4){
-      //   Navigator.pushNamed(context, PCMBHome.id);
-      // }
     } catch (error) {
       setState(() {
         spinkit2 = false;
