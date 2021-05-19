@@ -3,13 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter_application_1/PCB%20Screens/PhysicsPage.dart';
 import 'package:flutter_application_1/PCB%20Screens/ChemistryPage.dart';
-import 'package:flutter_application_1/PCB%20Screens/MathsPage.dart';
+import 'MathsPage.dart';
 import 'package:flutter_application_1/PCB%20Screens/BiologyPage.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
-class PCBHome extends StatelessWidget {
+class PCMBHome extends StatelessWidget {
   List<String> l = ["Physics", "Chemistry", "Mathematics", "Biology"];
   static String id = "PCMBHome";
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
