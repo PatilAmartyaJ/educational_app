@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
@@ -12,7 +14,7 @@ class Nma2 extends StatefulWidget {
 class _Nma2State extends State<Nma2> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    Container(
         child: StreamBuilder<QuerySnapshot>(
       stream:
           FirebaseFirestore.instance.collection("10Th NGeometry").snapshots(),
@@ -24,6 +26,10 @@ class _Nma2State extends State<Nma2> {
             itemCount: snapshot.data.docs.length,
             itemBuilder: (context, index) {
               DocumentSnapshot sub = snapshot.data.docs[index];
+              int index2 = sub['img'].length;
+              print(index2);
+              bool _first = true;
+              final random = Random();
               return Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: GestureDetector(
@@ -32,7 +38,7 @@ class _Nma2State extends State<Nma2> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            ChapterView(sub.id, "10Th NGeometry"),
+                            ChapterView(sub.id, "10Th NGeometry", index2),
                       ),
                     );
                   },
@@ -63,7 +69,18 @@ class _Nma2State extends State<Nma2> {
                                 padding: const EdgeInsets.all(12.0),
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(12.0),
-                                    child: Image.network(sub['img']))),
+                                    child: AnimatedCrossFade(
+                                      duration: Duration(seconds: 6),
+                                      reverseDuration: Duration(seconds: 6),
+                                      firstChild: Image.network(
+                                          sub['img'][random.nextInt(index2)]),
+                                      crossFadeState: _first
+                                          ? CrossFadeState.showFirst
+                                          : CrossFadeState.showSecond,
+                                      secondChild: Image.network(
+                                          sub['img'][random.nextInt(index2)]),
+                                    ))),
+
                             // textAlign: TextAlign.center,
                           ],
                         ),
