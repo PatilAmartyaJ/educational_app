@@ -6,6 +6,13 @@ import 'package:flutter_application_1/PCM%20Screens/MathsPage.dart';
 import 'package:flutter_application_1/PCM%20Screens/PhysicsPage.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 
+<<<<<<< HEAD
+=======
+import '../SearchEngine.dart';
+import 'PhysicsPage.dart';
+import 'ChemistryPage.dart';
+import 'MathsPage.dart';
+>>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 

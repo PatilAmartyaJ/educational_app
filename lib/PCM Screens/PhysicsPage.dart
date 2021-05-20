@@ -4,8 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_application_1/chapter.dart';
 import 'package:flutter_application_1/constants.dart';
+=======
+
+import '../chapter.dart';
+import '../constants.dart';
+>>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
@@ -29,14 +35,18 @@ class _PhysicsPageState extends State<PhysicsPage> {
             itemCount: snapshot.data.docs.length,
             itemBuilder: (context, index) {
               DocumentSnapshot sub = snapshot.data.docs[index];
+<<<<<<< HEAD
               int index2 = sub['img'].length;
               print(index2);
               bool _first = true;
               final random = Random();
+=======
+>>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
               return Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: GestureDetector(
                   onTap: () {
+<<<<<<< HEAD
                     setState(() {});
                   },
                   onDoubleTap: () {
@@ -45,6 +55,12 @@ class _PhysicsPageState extends State<PhysicsPage> {
                       MaterialPageRoute(
                         builder: (context) =>
                             ChapterView(sub.id, "PChapters", index2),
+=======
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChapterView(sub.id, "PChapters"),
+>>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
                       ),
                     );
                   },
@@ -70,6 +86,7 @@ class _PhysicsPageState extends State<PhysicsPage> {
                                       fontWeight: FontWeight.w500,
                                     )),
                               ),
+<<<<<<< HEAD
                             ),
                             Padding(
                                 padding: const EdgeInsets.all(12.0),
@@ -87,6 +104,22 @@ class _PhysicsPageState extends State<PhysicsPage> {
                                           sub['img'][random.nextInt(index2)]),
                                     ))),
 
+=======
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Image.network(sub['img']),
+                            ),
+                            FAProgressBar(
+                              currentValue: sub['percentage'],
+                              maxValue: 100,
+                              direction: Axis.horizontal,
+                              backgroundColor: Colors.white,
+                              progressColor: Colors.teal,
+                              size: 10.0,
+                            )
+>>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
                             // textAlign: TextAlign.center,
                           ],
                         ),
