@@ -6,21 +6,24 @@ import 'package:flutter_application_1/PCM%20Screens/MathsPage.dart';
 import 'package:flutter_application_1/PCM%20Screens/PhysicsPage.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 
-<<<<<<< HEAD
-=======
-import '../SearchEngine.dart';
-import 'PhysicsPage.dart';
-import 'ChemistryPage.dart';
-import 'MathsPage.dart';
->>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
-class PCMHome extends StatelessWidget {
+class PCMHome extends StatefulWidget {
+  final String id;
+  final String collectionName;
+  PCMHome(this.id, this.collectionName);
+  @override
+  _PCMHomeState createState() => _PCMHomeState();
+}
+
+class _PCMHomeState extends State<PCMHome> {
   List<String> l = ["Physics", "Chemistry", "Mathematics"];
-  static String id = "PCMHome";
+
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
   final Color moreDark = Color.fromARGB(255, 20, 32, 50);
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

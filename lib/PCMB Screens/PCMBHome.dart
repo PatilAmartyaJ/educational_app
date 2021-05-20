@@ -2,25 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/PCB%20Screens/PhysicsPage.dart';
 import 'package:flutter_application_1/PCB%20Screens/ChemistryPage.dart';
-<<<<<<< HEAD
-
-=======
-import 'MathsPage.dart';
->>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
 import 'package:flutter_application_1/PCB%20Screens/BiologyPage.dart';
 import 'package:flutter_application_1/PCMB%20Screens/MathsPage.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
-<<<<<<< HEAD
 class PCMBHome extends StatefulWidget {
-=======
-class PCMBHome extends StatelessWidget {
-  List<String> l = ["Physics", "Chemistry", "Mathematics", "Biology"];
->>>>>>> ba2b98fa51a7b44b039bdc8dde172a0da0533133
-  static String id = "PCMBHome";
-
+  final String id;
+  final String collectionName;
+  PCMBHome(this.id, this.collectionName);
   @override
   _PCMBHomeState createState() => _PCMBHomeState();
 }

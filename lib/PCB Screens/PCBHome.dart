@@ -8,11 +8,21 @@ import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
-class PCBHome extends StatelessWidget {
+class PCBHome extends StatefulWidget {
+  final String id;
+  final String collectionName;
+  PCBHome(this.id, this.collectionName);
+  @override
+  _PCBHomeState createState() => _PCBHomeState();
+}
+
+class _PCBHomeState extends State<PCBHome> {
   List<String> l = ["Physics", "Chemistry", "Biology"];
-  static String id = "PCBHome";
+
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
   final Color moreDark = Color.fromARGB(255, 20, 32, 50);
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
