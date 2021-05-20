@@ -1,36 +1,16 @@
-// import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_core/firebase_core.dart';
-//
-// class JeePCM extends StatefulWidget {
-//   @override
-//   _JeePCMState createState() => _JeePCMState();
-// }
-//
-// class _JeePCMState extends State<JeePCM> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_application_1/PCM%20Screens/ChemistryPage.dart';
+import 'package:flutter_application_1/PCM%20Screens/MathsPage.dart';
+import 'package:flutter_application_1/PCM%20Screens/PhysicsPage.dart';
+import 'package:flutter_application_1/SearchEngine.dart';
 
-import 'package:educational_app/PCM%20Screens/PhysicsPage.dart';
-import 'package:educational_app/PCM%20Screens/ChemistryPage.dart';
-import 'package:educational_app/PCM%20Screens/MathsPage.dart';
-import 'package:educational_app/SearchEngine.dart';
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
-
 class PCMHome extends StatelessWidget {
-  List<String> l = [
-    "Physics",
-    "Chemistry",
-    "Mathematics",
-  ];
+  List<String> l = ["Physics", "Chemistry", "Mathematics"];
   static String id = "PCMHome";
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
   final Color moreDark = Color.fromARGB(255, 20, 32, 50);
@@ -62,7 +42,7 @@ class PCMHome extends StatelessWidget {
               activeIconTheme: IconThemeData(color: Colors.teal),
               titleStyle: TextStyle(color: Colors.white, fontSize: 10),
               activeTitleStyle:
-              TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
               circleColors: [Colors.white, Colors.orange, Colors.redAccent],
               actionButtonDetails: SCActionButtonDetails(
                   color: Colors.red,
