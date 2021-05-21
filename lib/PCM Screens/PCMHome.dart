@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter_application_1/Components/drawer.dart';
 
 import '../SearchEngine.dart';
@@ -9,26 +10,33 @@ import '../constants.dart';
 import 'PhysicsPage.dart';
 import 'ChemistryPage.dart';
 import 'MathsPage.dart';
+
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
 class PCMHome extends StatefulWidget {
+
   PCMHome(this.id, this.collectionName);
 
   final String id;
   final String collectionName;
+
   @override
   _PCMHomeState createState() => _PCMHomeState();
 }
 
 class _PCMHomeState extends State<PCMHome> {
+
   List<String> l = [
     "Physics",
     "Chemistry",
     "Mathematics",
   ];
+
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
   final Color moreDark = Color.fromARGB(255, 20, 32, 50);
+
 
   final _auth = FirebaseAuth.instance;
   String name;
@@ -45,6 +53,7 @@ class _PCMHomeState extends State<PCMHome> {
       email = ds.data()['Email'];
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

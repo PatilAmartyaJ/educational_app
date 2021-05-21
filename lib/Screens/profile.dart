@@ -9,7 +9,6 @@ import 'package:flutter_application_1/Screens/HomeScreen.dart';
 import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:flutter_application_1/Components/drawer.dart';
 
 import '../constants.dart';
 
@@ -36,7 +35,7 @@ class _ChapterViewState extends State<Profilepage> {
     print(id);
     cName = widget.collectionName;
     print(cName);
-    CollectionReference _demo = FirebaseFirestore.instance.collection(cName);
+    CollectionReference _demo = FirebaseFirestore.instance.collection('users');
     return Scaffold(
       body: Stack(
         children: [
@@ -44,18 +43,19 @@ class _ChapterViewState extends State<Profilepage> {
               stream: _demo.doc(id).snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
-                  print(snapshot.error);
                   return Scaffold(
                     body: Center(
                       child: Text("Error : ${snapshot.error}"),
                     ),
                   );
-                } else if (snapshot.connectionState == ConnectionState.done ||
+                }
+                if (snapshot.connectionState == ConnectionState.done ||
                     snapshot.hasData) {
                   var docData = snapshot.data;
-                  print(snapshot.data);
+
                   return SafeArea(
                       child: Scaffold(
+
                           drawer: DrawerWidget(
                             email: docData['Email'],
                             name: docData['Full Name'],
@@ -91,10 +91,10 @@ class _ChapterViewState extends State<Profilepage> {
                                                 setState(() {
                                                   spinkit2 = true;
                                                 });
+                                                print(ca);
+                                                await returnsStandard(
+                                                    context, ca);
                                               }
-                                              print(ca);
-                                              await returnsStandard(
-                                                  context, ca);
                                             },
                                             child: Text("Go to dashboard")),
                                       ],
@@ -115,33 +115,37 @@ class _ChapterViewState extends State<Profilepage> {
 
   Future returnsStandard(BuildContext context, int st) async {
     try {
-      //print(standN); //This should be true but it should print true;
       if (st == 1) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => NTSEHome(id, 'users'),
+            builder: (context) => NTSEHome(id, "users"),
           ),
         );
       } else if (st == 2) {
         Navigator.push(
           context,
           MaterialPageRoute(
+
             builder: (context) => PCMHome(id, 'users'),
-          ),
+
         );
       } else if (st == 3) {
         Navigator.push(
           context,
           MaterialPageRoute(
+
             builder: (context) => PCBHome(id, 'users'),
+
           ),
         );
       } else if (st == 4) {
         Navigator.push(
           context,
           MaterialPageRoute(
+
             builder: (context) => PCMBHome(id, 'users'),
+
           ),
         );
       }

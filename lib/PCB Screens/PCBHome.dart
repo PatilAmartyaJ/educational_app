@@ -10,6 +10,7 @@ import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
+
 import '../constants.dart';
 
 class PCBHome extends StatefulWidget {
@@ -18,14 +19,19 @@ class PCBHome extends StatefulWidget {
   final String id;
   final String collectionName;
 
+
   @override
   _PCBHomeState createState() => _PCBHomeState();
 }
 
 class _PCBHomeState extends State<PCBHome> {
   List<String> l = ["Physics", "Chemistry", "Biology"];
+
+
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
   final Color moreDark = Color.fromARGB(255, 20, 32, 50);
+
   final _auth = FirebaseAuth.instance;
 
   String name;
@@ -42,6 +48,7 @@ class _PCBHomeState extends State<PCBHome> {
       email = ds.data()['Email'];
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

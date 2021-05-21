@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/Components/drawer.dart';
 
@@ -7,16 +8,20 @@ import 'package:flutter_application_1/PCB%20Screens/PhysicsPage.dart';
 import 'package:flutter_application_1/PCB%20Screens/ChemistryPage.dart';
 import '../constants.dart';
 import 'MathsPage.dart';
+
 import 'package:flutter_application_1/PCB%20Screens/BiologyPage.dart';
+import 'package:flutter_application_1/PCMB%20Screens/MathsPage.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
 class PCMBHome extends StatefulWidget {
+
   PCMBHome(this.id, this.collectionName);
 
   final String id;
   final String collectionName;
+
 
   @override
   _PCMBHomeState createState() => _PCMBHomeState();
@@ -26,7 +31,9 @@ class _PCMBHomeState extends State<PCMBHome> {
   List<String> l = ["Physics", "Chemistry", "Mathematics", "Biology"];
 
   final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
   final Color moreDark = Color.fromARGB(255, 20, 32, 50);
+
   final _auth = FirebaseAuth.instance;
   String name;
   String email;
@@ -42,6 +49,7 @@ class _PCMBHomeState extends State<PCMBHome> {
       email = ds.data()['Email'];
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

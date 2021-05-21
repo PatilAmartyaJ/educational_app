@@ -14,7 +14,7 @@ class Nma2 extends StatefulWidget {
 class _Nma2State extends State<Nma2> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    Container(
         child: StreamBuilder<QuerySnapshot>(
       stream:
           FirebaseFirestore.instance.collection("10Th NGeometry").snapshots(),
