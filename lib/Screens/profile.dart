@@ -10,6 +10,7 @@ import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+import '../Components/drawer.dart';
 import '../constants.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
@@ -48,14 +49,12 @@ class _ChapterViewState extends State<Profilepage> {
                       child: Text("Error : ${snapshot.error}"),
                     ),
                   );
-                }
-                if (snapshot.connectionState == ConnectionState.done ||
+                } else if (snapshot.connectionState == ConnectionState.done ||
                     snapshot.hasData) {
                   var docData = snapshot.data;
 
                   return SafeArea(
                       child: Scaffold(
-
                           drawer: DrawerWidget(
                             email: docData['Email'],
                             name: docData['Full Name'],
@@ -91,10 +90,10 @@ class _ChapterViewState extends State<Profilepage> {
                                                 setState(() {
                                                   spinkit2 = true;
                                                 });
-                                                print(ca);
-                                                await returnsStandard(
-                                                    context, ca);
                                               }
+                                              print(ca);
+                                              await returnsStandard(
+                                                  context, ca);
                                             },
                                             child: Text("Go to dashboard")),
                                       ],
@@ -126,26 +125,21 @@ class _ChapterViewState extends State<Profilepage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-
             builder: (context) => PCMHome(id, 'users'),
-
+          ),
         );
       } else if (st == 3) {
         Navigator.push(
           context,
           MaterialPageRoute(
-
             builder: (context) => PCBHome(id, 'users'),
-
           ),
         );
       } else if (st == 4) {
         Navigator.push(
           context,
           MaterialPageRoute(
-
             builder: (context) => PCMBHome(id, 'users'),
-
           ),
         );
       }
