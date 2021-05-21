@@ -6,7 +6,7 @@ import 'package:flutter_application_1/NTSE%20Screens/MentalAbilityScreens/Nm3.da
 
 class NMentalAbilityTab extends StatefulWidget {
   NMentalAbilityTab(this.nm1Color);
-  Color nm1Color;
+  final Color nm1Color;
   @override
   _NMentalAbilityTabState createState() => _NMentalAbilityTabState();
 }
@@ -14,6 +14,7 @@ class NMentalAbilityTab extends StatefulWidget {
 class _NMentalAbilityTabState extends State<NMentalAbilityTab>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
+  Color nm1Color;
   @override
   void initState() {
     super.initState();
@@ -21,10 +22,9 @@ class _NMentalAbilityTabState extends State<NMentalAbilityTab>
     _tabController.addListener(_handleTabSelection);
   }
 
-  @override
   void _handleTabSelection() {
     setState(() {
-      widget.nm1Color;
+      nm1Color = widget.nm1Color;
     });
   }
 
@@ -47,27 +47,21 @@ class _NMentalAbilityTabState extends State<NMentalAbilityTab>
                       child: Text(
                     "Verbal Reasoning",
                     style: TextStyle(
-                      color: _tabController.index == 0
-                          ? widget.nm1Color
-                          : Colors.grey,
+                      color: _tabController.index == 0 ? nm1Color : Colors.grey,
                     ),
                   )),
                   Tab(
                       child: Text(
                     "Non-Verbal Reasoning",
                     style: TextStyle(
-                      color: _tabController.index == 1
-                          ? widget.nm1Color
-                          : Colors.grey,
+                      color: _tabController.index == 1 ? nm1Color : Colors.grey,
                     ),
                   )),
                   Tab(
                       child: Text(
                     "Logical and Analytical Reasoning",
                     style: TextStyle(
-                      color: _tabController.index == 2
-                          ? widget.nm1Color
-                          : Colors.grey,
+                      color: _tabController.index == 2 ? nm1Color : Colors.grey,
                     ),
                   )),
                 ],
