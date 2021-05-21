@@ -14,7 +14,6 @@ import 'package:flutter_application_1/Components/drawer.dart';
 import '../constants.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
-final FirebaseAuth auth = FirebaseAuth.instance;
 
 class Profilepage extends StatefulWidget {
   final String id;
@@ -26,6 +25,7 @@ class Profilepage extends StatefulWidget {
 }
 
 class _ChapterViewState extends State<Profilepage> {
+  final _auth = FirebaseAuth.instance;
   String id;
   String cName;
   bool spinkit2 = false;
@@ -59,6 +59,7 @@ class _ChapterViewState extends State<Profilepage> {
                           drawer: DrawerWidget(
                             email: docData['Email'],
                             name: docData['Full Name'],
+                            auth: _auth,
                           ),
                           body: Builder(
                               builder: (context) => Container(
