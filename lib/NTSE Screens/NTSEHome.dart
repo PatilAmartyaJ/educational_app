@@ -188,6 +188,7 @@
 //   }
 // }
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_application_1/Components/drawer.dart';
@@ -199,7 +200,7 @@ import 'package:flutter_application_1/NTSE%20Screens/NSciencePage.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
