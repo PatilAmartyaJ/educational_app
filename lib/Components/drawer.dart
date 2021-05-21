@@ -1,3 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
+
 import 'Screens/drawer_redirect_screens/advanced_challenges_screen.dart';
 import 'Screens/drawer_redirect_screens/books_screen.dart';
 import 'Screens/drawer_redirect_screens/features_screen.dart';
@@ -10,9 +13,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'list_tile.dart';
 
 class DrawerWidget extends StatelessWidget {
-  DrawerWidget({@required this.name, @required this.email});
+  DrawerWidget(
+      {@required this.name, @required this.email, @required this.auth});
   final String name;
   final String email;
+  final FirebaseAuth auth;
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +69,25 @@ class DrawerWidget extends StatelessWidget {
             text: "Video Lectures",
           ),
           ListTileWidget(
-              iconData: FontAwesomeIcons.laptop,
-              routeName: AdvancedChallengesScreen.id,
-              text: "Advanced Challenges"),
+            iconData: FontAwesomeIcons.laptop,
+            routeName: AdvancedChallengesScreen.id,
+            text: "Advanced Challenges",
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.logout,
+              size: 20.0,
+              color: Colors.white,
+            ),
+            title: Text(
+              'Logout',
+              style: TextStyle(fontSize: 18.0),
+            ),
+            onTap: () {
+              auth.signOut();
+              Navigator.pushNamed(context, WelcomeScreen.id);
+            },
+          )
         ],
       ),
     );
