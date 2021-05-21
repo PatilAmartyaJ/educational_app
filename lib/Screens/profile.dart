@@ -123,11 +123,26 @@ class _ChapterViewState extends State<Profilepage> {
           ),
         );
       } else if (st == 2) {
-        Navigator.pushNamed(context, PCMHome.id);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PCMHome(id, 'users'),
+          ),
+        );
       } else if (st == 3) {
-        Navigator.pushNamed(context, PCBHome.id);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PCBHome(id, 'users'),
+          ),
+        );
       } else if (st == 4) {
-        Navigator.pushNamed(context, PCMBHome.id);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PCMBHome(id, 'users'),
+          ),
+        );
       }
     } catch (error) {
       setState(() {
