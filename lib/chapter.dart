@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
@@ -9,7 +11,8 @@ final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 class ChapterView extends StatefulWidget {
   final String id;
   final String collectionName;
-  ChapterView(this.id, this.collectionName);
+  final int length;
+  ChapterView(this.id, this.collectionName, this.length);
 
   @override
   _ChapterViewState createState() => _ChapterViewState();
@@ -18,6 +21,18 @@ class ChapterView extends StatefulWidget {
 class _ChapterViewState extends State<ChapterView> {
   String id;
   String cName;
+
+  int index2 = 0;
+  final random = Random();
+  @override
+  void initState() {
+    Timer.periodic(Duration(seconds: 60), (timer) {
+      setState(() {
+        index2 = random.nextInt(3);
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,39 +68,44 @@ class _ChapterViewState extends State<ChapterView> {
                         slivers: <Widget>[
                           SliverAppBar(
                             iconTheme: IconThemeData(
-                              color: Colors.white,
+                              color: darkBlue,
                             ),
                             backgroundColor: darkBlue,
-                            expandedHeight: 350,
-                            flexibleSpace: FlexibleSpaceBar(
-                                background: Stack(
-                                  fit: StackFit.expand,
-                                  children: <Widget>[
-                                    Image.network(
-                                      "${docData['img']}",
-                                      fit: BoxFit.cover,
-                                    ),
-                                    const DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: Alignment(0.0, 0.5),
-                                          end: Alignment(0.0, 0.0),
-                                          colors: <Color>[
-                                            Color(0x60000000),
-                                            Color(0x00000000),
-                                          ],
+                            expandedHeight: 400,
+                            collapsedHeight: 100,
+                            floating: true,
+                            flexibleSpace: AnimatedSwitcher(
+                              duration: Duration(milliseconds: 1500),
+                              child: FlexibleSpaceBar(
+                                  background: Stack(
+                                    fit: StackFit.expand,
+                                    children: <Widget>[
+                                      Image.network(
+                                        "${docData['img'][index2]}",
+                                        fit: BoxFit.cover,
+                                      ),
+                                      const DecoratedBox(
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            begin: Alignment(0.0, 0.5),
+                                            end: Alignment(0.0, 0.0),
+                                            colors: <Color>[
+                                              Color(0x60000000),
+                                              Color(0x00000000),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                centerTitle: true,
-                                title: Text("${docData['name']}"),
-                                stretchModes: <StretchMode>[
-                                  StretchMode.zoomBackground,
-                                  StretchMode.blurBackground,
-                                  StretchMode.fadeTitle
-                                ]),
+                                    ],
+                                  ),
+                                  centerTitle: true,
+                                  title: Text("${docData['name']}"),
+                                  stretchModes: <StretchMode>[
+                                    StretchMode.zoomBackground,
+                                    StretchMode.blurBackground,
+                                    StretchMode.fadeTitle
+                                  ]),
+                            ),
                           ),
                           SliverList(
                               delegate: SliverChildListDelegate(<Widget>[
