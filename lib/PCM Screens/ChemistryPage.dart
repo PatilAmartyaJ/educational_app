@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter/material.dart';
-import '../Chapter.dart';
-import '../constants.dart';
+
+import 'package:flutter_application_1/chapter.dart';
+import 'package:flutter_application_1/constants.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
@@ -27,14 +30,22 @@ class _ChemistryPageState extends State<ChemistryPage> {
             itemCount: snapshot.data.docs.length,
             itemBuilder: (context, index) {
               DocumentSnapshot sub = snapshot.data.docs[index];
+              int index2 = sub['img'].length;
+              print(index2);
+              bool _first = true;
+              final random = Random();
               return Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: GestureDetector(
                   onTap: () {
+                    setState(() {});
+                  },
+                  onDoubleTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChapterView(sub.id, "CChapters"),
+                        builder: (context) =>
+                            ChapterView(sub.id, "CChapters", index2),
                       ),
                     );
                   },
@@ -61,20 +72,21 @@ class _ChemistryPageState extends State<ChemistryPage> {
                                     )),
                               ),
                             ),
-
                             Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.network(sub['img']),
-                            ),
-                            FAProgressBar(
-                              currentValue: sub['percentage'],
-                              maxValue: 100,
-                              direction: Axis.horizontal,
-                              backgroundColor: Colors.white,
-                              progressColor: Colors.teal,
-                              size: 10.0,
-                            )
-                            // textAlign: TextAlign.center,
+                                padding: const EdgeInsets.all(12.0),
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    child: AnimatedCrossFade(
+                                      duration: Duration(seconds: 6),
+                                      reverseDuration: Duration(seconds: 6),
+                                      firstChild: Image.network(
+                                          sub['img'][random.nextInt(index2)]),
+                                      crossFadeState: _first
+                                          ? CrossFadeState.showFirst
+                                          : CrossFadeState.showSecond,
+                                      secondChild: Image.network(
+                                          sub['img'][random.nextInt(index2)]),
+                                    ))),
                           ],
                         ),
                       ),
