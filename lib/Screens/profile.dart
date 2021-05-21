@@ -13,7 +13,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import '../constants.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
-final FirebaseAuth auth = FirebaseAuth.instance;
 
 class Profilepage extends StatefulWidget {
   final String id;
@@ -25,6 +24,7 @@ class Profilepage extends StatefulWidget {
 }
 
 class _ChapterViewState extends State<Profilepage> {
+  final _auth = FirebaseAuth.instance;
   String id;
   String cName;
   bool spinkit2 = false;
@@ -55,7 +55,12 @@ class _ChapterViewState extends State<Profilepage> {
 
                   return SafeArea(
                       child: Scaffold(
-                          drawer: Drawer(),
+
+                          drawer: DrawerWidget(
+                            email: docData['Email'],
+                            name: docData['Full Name'],
+                            auth: _auth,
+                          ),
                           body: Builder(
                               builder: (context) => Container(
                                     child: Column(
@@ -121,21 +126,26 @@ class _ChapterViewState extends State<Profilepage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PCMHome(id, "users"),
-          ),
+
+            builder: (context) => PCMHome(id, 'users'),
+
         );
       } else if (st == 3) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PCBHome(id, "users"),
+
+            builder: (context) => PCBHome(id, 'users'),
+
           ),
         );
       } else if (st == 4) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PCMBHome(id, "users"),
+
+            builder: (context) => PCMBHome(id, 'users'),
+
           ),
         );
       }
