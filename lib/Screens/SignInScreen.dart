@@ -25,9 +25,11 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF83c5be),
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Color(0xff184047),
+        centerTitle: true,
+        title: Text("Sign In"),
+        backgroundColor: Colors.blue,
         leading: BackButton(
             onPressed: () => Navigator.pushNamed(context, WelcomeScreen.id)),
       ),
@@ -72,7 +74,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               RoundedButton(
                 title: 'Log In',
-                colour: Color(0xff184047),
+                colour: Colors.white,
                 onpressed: () async {
                   if (email == null && password == null) {
                     setState(() {

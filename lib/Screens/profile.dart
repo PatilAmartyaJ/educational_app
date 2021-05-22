@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Components/GradientAppbar.dart';
 import 'package:flutter_application_1/NTSE%20Screens/NTSEHome.dart';
 import 'package:flutter_application_1/PCB%20Screens/PCBHome.dart';
 import 'package:flutter_application_1/PCM%20Screens/PCMHome.dart';
@@ -38,75 +39,107 @@ class _ChapterViewState extends State<Profilepage> {
     print(cName);
     CollectionReference _demo = FirebaseFirestore.instance.collection('users');
     return Scaffold(
-      body: Stack(
+      body: Column(
         children: [
-          StreamBuilder(
-              stream: _demo.doc(id).snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Scaffold(
-                    body: Center(
-                      child: Text("Error : ${snapshot.error}"),
-                    ),
-                  );
-                } else if (snapshot.connectionState == ConnectionState.done ||
-                    snapshot.hasData) {
-                  var docData = snapshot.data;
+          GradientAppBar("My Profile"),
+          Stack(
+            children: [
+              StreamBuilder(
+                  stream: _demo.doc(id).snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Scaffold(
+                        body: Center(
+                          child: Text("Error : ${snapshot.error}"),
+                        ),
+                      );
+                    } else if (snapshot.connectionState ==
+                            ConnectionState.done ||
+                        snapshot.hasData) {
+                      var docData = snapshot.data;
 
-                  return SafeArea(
-                      child: Scaffold(
-                          drawer: DrawerWidget(
-                            email: docData['Email'],
-                            name: docData['Full Name'],
-                            auth: _auth,
-                          ),
-                          body: Builder(
-                              builder: (context) => Container(
-                                    child: Column(
-                                      children: <Widget>[
-                                        ElevatedButton(
-                                            onPressed: () async {
-                                              if (docData['Standard'] ==
-                                                  "10Th NTSE") {
-                                                setState(() {
-                                                  ca = 1;
-                                                });
-                                              } else if (docData['Standard'] ==
-                                                  "+1,+2 IIT JEE (PCM)") {
-                                                setState(() {
-                                                  ca = 2;
-                                                });
-                                              } else if (docData['Standard'] ==
-                                                  "+1,+2 NEET,AIIMS (PCB)") {
-                                                setState(() {
-                                                  ca = 3;
-                                                });
-                                              } else if (docData['Standard'] ==
-                                                  "+1,+2 PCMB") {
-                                                setState(() {
-                                                  ca = 4;
-                                                });
-                                              } else {
-                                                setState(() {
-                                                  spinkit2 = true;
-                                                });
-                                              }
-                                              print(ca);
-                                              await returnsStandard(
-                                                  context, ca);
-                                            },
-                                            child: Text("Go to dashboard")),
-                                      ],
-                                    ),
-                                  ))));
-                }
+                      return SafeArea(
+                          child: Scaffold(
+                              drawer: DrawerWidget(
+                                email: docData['Email'],
+                                name: docData['Full Name'],
+                                auth: _auth,
+                              ),
+                              body: Builder(
+                                  builder: (context) => Container(
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              child:
+                                                  Text("$docData['Full Name']"),
+                                            ),
+                                            SizedBox(
+                                              height: 50,
+                                            ),
+                                            Container(
+                                              child: Text("$docData['Email']"),
+                                            ),
+                                            SizedBox(
+                                              height: 50,
+                                            ),
+                                            Container(
+                                              child:
+                                                  Text("$docData['Standard']"),
+                                            ),
+                                            SizedBox(
+                                              height: 50,
+                                            ),
+                                            Center(
+                                              child: ElevatedButton(
+                                                  onPressed: () async {
+                                                    if (docData['Standard'] ==
+                                                        "10Th NTSE") {
+                                                      setState(() {
+                                                        ca = 1;
+                                                      });
+                                                    } else if (docData[
+                                                            'Standard'] ==
+                                                        "+1,+2 IIT JEE (PCM)") {
+                                                      setState(() {
+                                                        ca = 2;
+                                                      });
+                                                    } else if (docData[
+                                                            'Standard'] ==
+                                                        "+1,+2 NEET,AIIMS (PCB)") {
+                                                      setState(() {
+                                                        ca = 3;
+                                                      });
+                                                    } else if (docData[
+                                                            'Standard'] ==
+                                                        "+1,+2 PCMB") {
+                                                      setState(() {
+                                                        ca = 4;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        spinkit2 = true;
+                                                      });
+                                                    }
+                                                    print(ca);
+                                                    await returnsStandard(
+                                                        context, ca);
+                                                  },
+                                                  child:
+                                                      Text("Go to dashboard")),
+                                            ),
+                                          ],
+                                        ),
+                                      ))));
+                    }
 
-                return Scaffold(
-                  body: Center(
-                    child: spinkit,
-                  ),
-                );
-              })
+                    return Scaffold(
+                      body: Center(
+                        child: spinkit,
+                      ),
+                    );
+                  })
+            ],
+          ),
         ],
       ),
     );

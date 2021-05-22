@@ -300,59 +300,67 @@ class _NTSEHomeState extends State<NTSEHome>
                     name: name,
                     auth: _auth,
                   ),
-                  body: SpinCircleBottomBarHolder(
-                    bottomNavigationBar: SCBottomBarDetails(
-                        iconTheme: IconThemeData(color: Colors.white),
-                        activeIconTheme: IconThemeData(color: Colors.teal),
-                        titleStyle:
-                            TextStyle(color: Colors.white, fontSize: 10),
-                        activeTitleStyle: TextStyle(
-                            color: Colors.teal, fontWeight: FontWeight.bold),
-                        circleColors: [
-                          Colors.cyanAccent[400],
-                          Colors.cyanAccent[400],
-                          Colors.cyanAccent[400],
-                        ],
-                        actionButtonDetails: SCActionButtonDetails(
-                            color: Colors.cyanAccent[700],
-                            icon: Icon(Icons.expand_less),
-                            elevation: 0.0),
-                        backgroundColor: moreDark,
-                        items: <SCBottomBarItem>[
-                          SCBottomBarItem(
-                              icon: Icons.home,
-                              onPressed: () {},
-                              title: "Home"),
-                          SCBottomBarItem(
-                              icon: Icons.search,
-                              onPressed: () {
-                                Navigator.pushNamed(context, SearchEngine.id);
-                              },
-                              title: "Search"),
-                          SCBottomBarItem(
-                              icon: Icons.assignment,
-                              onPressed: () {},
-                              title: "Take Test"),
-                          SCBottomBarItem(
-                              icon: Icons.history,
-                              onPressed: () {},
-                              title: "History")
-                        ],
-                        circleItems: <SCItem>[
-                          SCItem(icon: Icon(Icons.search), onPressed: () {}),
-                        ]),
-                    child: Container(
-                      color: Colors.grey.withAlpha(100),
-                      child: TabBarView(
-                        children: <Widget>[
-                          NMentalAbilityTab(Colors.white),
-                          NMathsPage(Colors.white),
-                          NSciencePage(Colors.white),
-                          NHistoryPage(Colors.white),
-                          NGeographyPage(Colors.white)
-                        ],
+                  body: Column(
+                    children: [
+                      SpinCircleBottomBarHolder(
+                        bottomNavigationBar: SCBottomBarDetails(
+                            iconTheme: IconThemeData(color: Colors.white),
+                            activeIconTheme:
+                                IconThemeData(color: Colors.pink[300]),
+                            titleStyle:
+                                TextStyle(color: Colors.white, fontSize: 10),
+                            activeTitleStyle: TextStyle(
+                                color: Colors.pink[300],
+                                fontWeight: FontWeight.bold),
+                            circleColors: [
+                              Colors.cyanAccent[400],
+                              Colors.cyanAccent[400],
+                              Colors.cyanAccent[400],
+                            ],
+                            actionButtonDetails: SCActionButtonDetails(
+                                color: Colors.cyanAccent[700],
+                                icon: Icon(Icons.expand_less),
+                                elevation: 0.0),
+                            backgroundColor: moreDark,
+                            items: <SCBottomBarItem>[
+                              SCBottomBarItem(
+                                  icon: Icons.home,
+                                  onPressed: () {},
+                                  title: "Home"),
+                              SCBottomBarItem(
+                                  icon: Icons.search,
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, SearchEngine.id);
+                                  },
+                                  title: "Search"),
+                              SCBottomBarItem(
+                                  icon: Icons.assignment,
+                                  onPressed: () {},
+                                  title: "Take Test"),
+                              SCBottomBarItem(
+                                  icon: Icons.history,
+                                  onPressed: () {},
+                                  title: "History")
+                            ],
+                            circleItems: <SCItem>[
+                              SCItem(
+                                  icon: Icon(Icons.search), onPressed: () {}),
+                            ]),
+                        child: Container(
+                          color: Colors.grey.withAlpha(100),
+                          child: TabBarView(
+                            children: <Widget>[
+                              NMentalAbilityTab(Colors.white),
+                              NMathsPage(Colors.white),
+                              NSciencePage(Colors.white),
+                              NHistoryPage(Colors.white),
+                              NGeographyPage(Colors.white)
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               );
