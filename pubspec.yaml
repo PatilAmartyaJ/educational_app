@@ -37,6 +37,7 @@ dependencies:
   path: ^1.8.0
   tab_indicator_styler: ^1.0.0
   google_fonts: ^2.0.0
+  adobe_xd: ^2.0.0+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
