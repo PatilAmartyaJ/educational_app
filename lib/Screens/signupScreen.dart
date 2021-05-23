@@ -36,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Sign In"),
+        title: Text("Sign Up"),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
