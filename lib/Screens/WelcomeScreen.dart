@@ -24,14 +24,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child:
                   // Adobe XD layer: 'PicsArt_05-20-11.08…' (shape)
                   Padding(
-                padding: const EdgeInsets.only(top: 60, bottom: 50),
+                padding: EdgeInsets.only(
+                    top: 60,
+                    bottom: 50,
+                    left: 20,
+                    right: MediaQuery.of(context).size.width / 144),
                 child: Container(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                          "https://firebasestorage.googleapis.com/v0/b/educational-app-183a5.appspot.com/o/StartImage.jpeg?alt=media&token=12b74ff2-4d8f-4632-9152-2926d94aa779"),
+                          "https://firebasestorage.googleapis.com/v0/b/educational-app-183a5.appspot.com/o/StartImage.jpg?alt=media&token=49ae22f5-ddbf-4e24-ba01-08f796824ff6"),
                       fit: BoxFit.fill,
                     ),
                   ),
