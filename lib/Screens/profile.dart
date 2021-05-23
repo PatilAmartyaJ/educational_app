@@ -9,6 +9,8 @@ import 'package:flutter_application_1/PCMB%20Screens/PCMBHome.dart';
 import 'package:flutter_application_1/Screens/HomeScreen.dart';
 import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
 import 'package:flutter_application_1/SearchEngine.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../Components/drawer.dart';
@@ -56,6 +58,28 @@ class _ChapterViewState extends State<Profilepage> {
 
                   return SafeArea(
                       child: Scaffold(
+                          appBar: AppBar(
+                            centerTitle: true,
+                            title: Text("My Profile",
+                                style: GoogleFonts.openSans(
+                                    fontStyle: FontStyle.italic,
+                                    textStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                    ))),
+                            flexibleSpace: Container(
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      begin: const FractionalOffset(0.0, 0.0),
+                                      end: const FractionalOffset(0.5, 0.0),
+                                      stops: [0.0, 1.0],
+                                      tileMode: TileMode.clamp,
+                                      colors: <Color>[
+                                        Colors.pink,
+                                        Colors.blue
+                                      ])),
+                            ),
+                          ),
                           drawer: DrawerWidget(
                             email: docData['Email'],
                             name: docData['Full Name'],
@@ -63,64 +87,116 @@ class _ChapterViewState extends State<Profilepage> {
                           ),
                           body: Builder(
                               builder: (context) => Container(
-                                    child: Column(
-                                      children: <Widget>[
-                                        Container(
-                                          child: Text("$docData['Full Name']"),
-                                        ),
-                                        SizedBox(
-                                          height: 50,
-                                        ),
-                                        Container(
-                                          child: Text("$docData['Email']"),
-                                        ),
-                                        SizedBox(
-                                          height: 50,
-                                        ),
-                                        Container(
-                                          child: Text("$docData['Standard']"),
-                                        ),
-                                        SizedBox(
-                                          height: 50,
-                                        ),
-                                        Center(
-                                          child: ElevatedButton(
-                                              onPressed: () async {
-                                                if (docData['Standard'] ==
-                                                    "10Th NTSE") {
-                                                  setState(() {
-                                                    ca = 1;
-                                                  });
-                                                } else if (docData[
-                                                        'Standard'] ==
-                                                    "+1,+2 IIT JEE (PCM)") {
-                                                  setState(() {
-                                                    ca = 2;
-                                                  });
-                                                } else if (docData[
-                                                        'Standard'] ==
-                                                    "+1,+2 NEET,AIIMS (PCB)") {
-                                                  setState(() {
-                                                    ca = 3;
-                                                  });
-                                                } else if (docData[
-                                                        'Standard'] ==
-                                                    "+1,+2 PCMB") {
-                                                  setState(() {
-                                                    ca = 4;
-                                                  });
-                                                } else {
-                                                  setState(() {
-                                                    spinkit2 = true;
-                                                  });
-                                                }
-                                                print(ca);
-                                                await returnsStandard(
-                                                    context, ca);
-                                              },
-                                              child: Text("Go to dashboard")),
-                                        ),
-                                      ],
+                                    child: Center(
+                                      child: Column(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: CircleAvatar(
+                                              backgroundColor: Colors.grey,
+                                              radius: 60,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Container(
+                                            child: Text(docData['Full Name'],
+                                                style: GoogleFonts.pacifico(
+                                                    textStyle: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                            FontWeight.bold))),
+                                          ),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          Container(
+                                            child: Card(
+                                              color: Colors.white,
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: ListTile(
+                                                leading: Icon(
+                                                  Icons.email,
+                                                  color: Colors.black,
+                                                ),
+                                                title: Text(docData['Email'],
+                                                    style: GoogleFonts.lato(
+                                                        textStyle: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 20,
+                                                    ))),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 50,
+                                          ),
+                                          Container(
+                                            child: Card(
+                                              color: Colors.white,
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: ListTile(
+                                                leading: Icon(
+                                                  FontAwesomeIcons
+                                                      .graduationCap,
+                                                  color: Colors.black,
+                                                ),
+                                                title: Text(
+                                                  docData['Standard'],
+                                                  style: GoogleFonts.lato(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 50,
+                                          ),
+                                          Center(
+                                            child: ElevatedButton(
+                                                onPressed: () async {
+                                                  if (docData['Standard'] ==
+                                                      "10Th NTSE") {
+                                                    setState(() {
+                                                      ca = 1;
+                                                    });
+                                                  } else if (docData[
+                                                          'Standard'] ==
+                                                      "+1,+2 IIT JEE (PCM)") {
+                                                    setState(() {
+                                                      ca = 2;
+                                                    });
+                                                  } else if (docData[
+                                                          'Standard'] ==
+                                                      "+1,+2 NEET,AIIMS (PCB)") {
+                                                    setState(() {
+                                                      ca = 3;
+                                                    });
+                                                  } else if (docData[
+                                                          'Standard'] ==
+                                                      "+1,+2 PCMB") {
+                                                    setState(() {
+                                                      ca = 4;
+                                                    });
+                                                  } else {
+                                                    setState(() {
+                                                      spinkit2 = true;
+                                                    });
+                                                  }
+                                                  print(ca);
+                                                  await returnsStandard(
+                                                      context, ca);
+                                                },
+                                                child: Text("Go to dashboard")),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ))));
                 }
