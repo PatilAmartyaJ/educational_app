@@ -20,7 +20,7 @@ These pages have several cards for chapters which lead to a short description of
 We also have a test feature. It is a timed test. The users can attempt questions one-at-a-time and then proceed to the next question. On reaching the end of the test, there is a Submit button. The quiz gets submitted once the user presses the Submit button (or when the timer runs out). After submission, their score is displayed. The user may choose to view the solutions for the questions and also see which ones they got wrong. They can then go back to Home. 
 
 * GitHub repo link: [Link to repository](https://github.com/PatilAmartyaJ/educational_app)
-* Drive link: [Drive link here](https://drive.google.com/)
+* Drive link: [Drive link here](https://drive.google.com/drive/folders/1_F81oXIbhhaCq7JZFhHI7F1Gcl24r_gR?usp=sharing)
 
 ## Technology stack
 1. Dart
@@ -33,7 +33,7 @@ Students (especially high schoolers) do not have proper resources to study for e
 
 ## What did you learn from this project
 1. Amartya -
-2. Sarah - Through Skill Up 2.0 I got the opportunity to explore the App Development Domain in which I had no prior experience. I learned dart and I also learned how to use the Flutter SDK for creating natively compiled, cross-platform applications. I learned a lot of things in Flutter like stateless & stateful widgets, futures, asynchronous functions, routes and navigation, state management, etc. I had already worked with firebase in a previous project, but through this project I got the chance to better understand and get a deeper grasp on certain concepts like Firebase Authentication,  Firebase Storage, storing and retrieving data from Cloud Firestore Database, etc.
+2. Sarah - Through Skill Up 2.0 I got the opportunity to explore the App Development Domain in which I had no prior experience. I learned dart and I also learned how to use the Flutter SDK for creating natively compiled, cross-platform applications. I learned a lot of things in Flutter like stateless & stateful widgets, futures, asynchronous functions, routes and navigation, state management, etc. I had already worked with firebase in a previous project, but through this project I got the chance to better understand and get a deeper grasp on certain concepts like Firebase Authentication,  Firebase Storage, storing and retrieving data from Cloud Firestore Database, etc. Altogether it was a wonderful experience collaborating and learning new things from my teammates. I would like to thank our mentor for being so supportive and guiding us throughout this project.
 3. Reshmika - I learned how to use Dart and Flutter to develop cross-platform applications. I also learned how to store data using Firebase's Cloud Firestore. It was my first time working on App Development, so I learnt a lot.
 4. Prachiti - I had an experience working with flutter and dart initially but this project helped me go deeper into the advanced aspects such as connecting flutter and firebase, I also learned about Firebase and all its features such as Cloud Firestore and Storage.
 ## Screenshots
