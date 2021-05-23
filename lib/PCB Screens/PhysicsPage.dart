@@ -17,7 +17,7 @@ class _PhysicsState extends State<Physics> {
   @override
   Widget build(BuildContext context) {
     print("Physics called");
-    Container(
+    return Container(
         child: StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection("PChapters").snapshots(),
       builder: (context, snapshot) {
