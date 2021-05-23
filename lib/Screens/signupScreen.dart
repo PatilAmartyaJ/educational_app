@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_application_1/Components/RoundedButton.dart';
 import 'package:flutter_application_1/Screens/SignInScreen.dart';
-import 'package:flutter_application_1/constants.dart';
+
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,19 +21,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool showSpinner = false;
   String email;
   String password;
+  bool _passwordVisible = false;
   String grade;
   String name;
   final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF83c5be),
-      // appBar: AppBar(
-      //   backgroundColor: Color(0xff184047),
-      //   leading: BackButton(
-      //       onPressed: () => Navigator.pushNamed(context, WelcomeScreen.id)),
-      // ),
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Sign In"),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: const FractionalOffset(0.0, 0.0),
+                  end: const FractionalOffset(0.5, 0.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.clamp,
+                  colors: <Color>[Colors.pink, Colors.blue])),
+        ),
+      ),
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -55,9 +68,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.blueAccent, width: 1.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xFFF06292), width: 2.0),
+                    ),
                     hintText: 'Enter your email',
-                    suffixIcon: Opacity(
+                    prefixIcon: Opacity(
                       opacity: 0.70,
+                      child: Icon(FontAwesomeIcons.envelope,
+                          size: 25, color: Colors.white),
+                    ),
+                    suffixIcon: Opacity(
+                      opacity: 0.0,
                       child: Icon(FontAwesomeIcons.envelope,
                           size: 25, color: Colors.black),
                     ),
@@ -76,20 +102,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20.0,
                 ),
                 TextFormField(
-                  obscureText: true,
+                  obscureText: !_passwordVisible,
                   textAlign: TextAlign.center,
                   onChanged: (value) {
                     password = value;
                   },
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter your password',
-                    suffixIcon: Opacity(
-                      opacity: 0.80,
-                      child: Icon(FontAwesomeIcons.lock,
-                          size: 25, color: Colors.black),
-                    ),
-                  ),
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.blueAccent, width: 1.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xFFF06292), width: 2.0),
+                      ),
+                      hintText: 'Enter your password',
+                      prefixIcon: Opacity(
+                        opacity: 0.80,
+                        child: Icon(FontAwesomeIcons.lock,
+                            size: 25, color: Colors.white),
+                      ),
+                      suffix: SizedBox(
+                        height: 25,
+                        child: IconButton(
+                            icon: Icon(
+                              _passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            }),
+                      )),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter password';
@@ -110,11 +158,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.blueAccent, width: 1.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xFFF06292), width: 2.0),
+                    ),
                     hintText: 'Enter your name',
-                    suffixIcon: Opacity(
+                    prefixIcon: Opacity(
                       opacity: 0.70,
                       child: Icon(FontAwesomeIcons.userCircle,
-                          size: 25, color: Colors.black),
+                          size: 25, color: Colors.white),
+                    ),
+                    suffixIcon: Opacity(
+                      opacity: 0.0,
+                      child: Icon(FontAwesomeIcons.userCircle,
+                          size: 25, color: Colors.white),
                     ),
                   ),
                   validator: (value) {
@@ -132,11 +193,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   isExpanded: false,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    suffixIcon: Opacity(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.blueAccent, width: 1.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xFFF06292), width: 2.0),
+                    ),
+                    prefixIcon: Opacity(
                       opacity: 0.70,
                       child: Icon(
                         FontAwesomeIcons.graduationCap,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -150,7 +219,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ].map<DropdownMenuItem<String>>((grade) {
                     return DropdownMenuItem<String>(
                       value: grade,
-                      child: Text(grade),
+                      child: Center(child: Text(grade)),
                     );
                   }).toList(),
                   onChanged: (value) async {
@@ -176,7 +245,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 RoundedButton(
                   title: 'Sign Up',
-                  colour: Color(0xff184047),
+                  colour: Colors.white,
                   onpressed: () async {
                     if (_formKey.currentState.validate()) {
                       setState(() {
@@ -243,6 +312,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         desc: error.message,
         buttons: [
           DialogButton(
+            color: Colors.blue,
             child: Text('Try Again'),
             onPressed: () => setState(() {}),
             width: 100,

@@ -29,7 +29,15 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Sign In"),
-        backgroundColor: Colors.blue,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: const FractionalOffset(0.0, 0.0),
+                  end: const FractionalOffset(0.5, 0.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.clamp,
+                  colors: <Color>[Colors.pink, Colors.blue])),
+        ),
         leading: BackButton(
             onPressed: () => Navigator.pushNamed(context, WelcomeScreen.id)),
       ),
