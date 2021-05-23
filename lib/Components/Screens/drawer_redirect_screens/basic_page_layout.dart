@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
 class BasicPageLayout extends StatelessWidget {
   BasicPageLayout({@required this.auth, @required this.text});
   final FirebaseAuth auth;
@@ -11,9 +13,24 @@ class BasicPageLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF83c5be),
+      backgroundColor: darkBlue,
       appBar: AppBar(
-        backgroundColor: Color(0xff184047),
+        centerTitle: true,
+        title: Text(text,
+            style: GoogleFonts.openSans(
+                textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold))),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: const FractionalOffset(0.0, 0.0),
+                  end: const FractionalOffset(0.5, 0.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.clamp,
+                  colors: <Color>[Colors.pink, Colors.blue])),
+        ),
         actions: [
           ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Color(0xff184047)),
