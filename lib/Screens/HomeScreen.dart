@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }
 
-          if (snapshot.connectionState == ConnectionState.done ||
+          if (snapshot.connectionState == ConnectionState.active ||
               snapshot.hasData) {
             return StreamBuilder(
               stream: FirebaseAuth.instance.authStateChanges(),
