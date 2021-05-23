@@ -36,4 +36,8 @@ Students (especially high schoolers) do not have proper resources to study for e
 2. Sarah - Through Skill Up 2.0 I got the opportunity to explore the App Development Domain in which I had no prior experience. I learned dart and I also learned how to use the Flutter SDK for creating natively compiled, cross-platform applications. I learned a lot of things in Flutter like stateless & stateful widgets, futures, asynchronous functions, routes and navigation, state management, etc. I had already worked with firebase in a previous project, but through this project I got the chance to better understand and get a deeper grasp on certain concepts like Firebase Authentication,  Firebase Storage, storing and retrieving data from Cloud Firestore Database, etc.
 3. Reshmika - I learned how to use Dart and Flutter to develop cross-platform applications. I also learned how to store data using Firebase's Cloud Firestore. It was my first time working on App Development, so I learnt a lot.
 4. Prachiti - I had an experience working with flutter and dart initially but this project helped me go deeper into the advanced aspects such as connecting flutter and firebase, I also learned about Firebase and all its features such as Cloud Firestore and Storage.
+
+## Future Scope
+We can add chapter-wise tests and add graphs for analysing the student's performance. More resources can be added for different chapters. There can also be a QnA section for students to ask their doubts and get them answered by peers and teachers.
+
 ## Screenshots
