@@ -129,16 +129,19 @@ class _SignInScreenState extends State<SignInScreen> {
       print(error.message);
       // print(getMessageFromErrorCode(error));
       Alert(
+        style: AlertStyle(backgroundColor: Colors.white),
         context: context,
         title: 'Error',
         desc: error.message,
         buttons: [
           DialogButton(
+            color: Colors.blueAccent,
             child: Text('Try Again'),
             onPressed: () => Navigator.pop(context),
             width: 100,
           ),
           DialogButton(
+            color: Colors.blueAccent,
             child: Text('Sign In'),
             onPressed: () => Navigator.pushNamed(context, SignInScreen.id),
             width: 100,
