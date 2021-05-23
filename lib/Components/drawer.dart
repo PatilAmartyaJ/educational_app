@@ -26,7 +26,14 @@ class DrawerWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(color: Color(0xFF83c5be)),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: const FractionalOffset(0.0, 0.0),
+                  end: const FractionalOffset(0.5, 0.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.clamp,
+                  colors: <Color>[Colors.pink, Colors.blue]),
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
