@@ -22,6 +22,35 @@ We also have a test feature. It is a timed test. The users can attempt questions
 * GitHub repo link: [Link to repository](https://github.com/PatilAmartyaJ/educational_app)
 * Drive link: [Drive link here](https://drive.google.com/drive/folders/1_F81oXIbhhaCq7JZFhHI7F1Gcl24r_gR?usp=sharing)
 
+## Dependencies
+
+The following packages are needed for the development of this application.
+
+- `email_validator: ^2.0.1` 
+- `firebase_core: ^1.0.1`
+- `cloud_firestore: ^1.0.1`
+- `firebase_auth: ^1.0.0`
+- `flutter_spinkit: "^4.1.2"`
+- `rflutter_alert: ^2.0.2`
+- `modal_progress_hud: ^0.1.3`
+- `font_awesome_flutter: ^8.12.0`
+- `auto_size_text: ^2.1.0`
+- `flutter_animation_progress_bar: ^2.0.0`
+- `spincircle_bottom_bar: ^1.0.0`
+- `speech_recognition: "^0.3.0"`
+- `permission_handler: ^3.2.0`
+- `avatar_glow: ^2.0.1`
+- `image_picker: ^0.7.4`
+- `firebase_storage: ^8.0.5`
+- `path: ^1.8.0`
+- `tab_indicator_styler: ^1.0.0`
+- `google_fonts: ^2.0.0`
+- `adobe_xd: ^2.0.0+1`
+- `video_player: ^2.1.1`
+- `transformer_page_view: ^0.1.6`
+- `circular_countdown_timer: ^0.2.0`
+
+
 ## Technology stack
 1. Dart
 2. Flutter
