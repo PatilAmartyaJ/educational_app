@@ -6,9 +6,7 @@ import 'package:flutter_application_1/NTSE%20Screens/NTSEHome.dart';
 import 'package:flutter_application_1/PCB%20Screens/PCBHome.dart';
 import 'package:flutter_application_1/PCM%20Screens/PCMHome.dart';
 import 'package:flutter_application_1/PCMB%20Screens/PCMBHome.dart';
-import 'package:flutter_application_1/Screens/HomeScreen.dart';
-import 'package:flutter_application_1/Screens/WelcomeScreen.dart';
-import 'package:flutter_application_1/SearchEngine.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
